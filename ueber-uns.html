@@ -7,45 +7,44 @@
   <link rel="stylesheet" href="styles.css">
   <style>
         :root {
-            --primary-color: #2563eb; /* Modern Royal Blue */
-            --primary-dark: #1e40af;
-            --secondary-color: #f8fafc;
-            --text-dark: #0f172a;
-            --text-light: #64748b;
+            --primary-color: #2563eb; /* Modern Blue */
+            --primary-hover: #1d4ed8;
+            --secondary-color: #1e293b; /* Dark Slate */
+            --text-color: #334155;
+            --light-bg: #f8fafc;
             --white: #ffffff;
-            --footer-bg: #1e293b;
-            --footer-text: #cbd5e1;
-            --transition: all 0.3s ease;
+            --footer-bg: #0f172a;
+            --footer-text: #94a3b8;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         body {
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            color: var(--text-dark);
-            background-color: var(--secondary-color);
-            line-height: 1.6;
+            font-family: var(--font-family);
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--light-bg);
         }
 
-        /* --- NAVIGATION STYLES --- */
+        /* --- NAVIGATION --- */
         .nav {
             background-color: var(--white);
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-top: 5px solid var(--primary-color);
+            padding: 1rem 2rem;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,12 +52,10 @@
 
         .nav-logo {
             font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-dark);
+            font-weight: 700;
+            color: var(--secondary-color);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.025em;
         }
 
         .nav-logo span {
@@ -67,101 +64,85 @@
 
         .nav-menu {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            list-style: none;
             align-items: center;
         }
 
         .nav-link {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-color);
             font-weight: 500;
-            font-size: 1rem;
-            transition: var(--transition);
-            position: relative;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
         }
 
         .nav-link:hover {
             color: var(--primary-color);
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
         .nav-cta {
             background-color: var(--primary-color);
-            color: var(--white) !important;
-            padding: 0.75rem 1.5rem;
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
             border-radius: 6px;
             font-weight: 600;
-            transition: var(--transition);
+            text-decoration: none;
+            transition: background-color 0.2s ease;
         }
 
         .nav-cta:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            background-color: var(--primary-hover);
+            color: var(--white); /* Ensure text remains white */
         }
 
-        .nav-cta::after {
-            display: none; /* No underline for button */
-        }
-
-        /* Mobile Menu Toggle (Hidden on Desktop) */
-        .mobile-toggle {
+        /* Mobile Menu Toggle (CSS only approach for simplicity) */
+        .mobile-menu-btn {
             display: none;
-            flex-direction: column;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
             cursor: pointer;
-        }
-        .mobile-toggle span {
-            height: 3px;
-            width: 25px;
-            background: var(--text-dark);
-            margin-bottom: 4px;
-            border-radius: 2px;
+            color: var(--secondary-color);
         }
 
-        /* --- FOOTER STYLES --- */
+        /* --- FOOTER --- */
         .footer {
             background-color: var(--footer-bg);
             color: var(--footer-text);
-            padding: 4rem 0 2rem 0;
-            margin-top: 4rem;
-            font-size: 0.95rem;
+            padding: 4rem 2rem 2rem;
+            margin-top: auto;
         }
 
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 3rem;
         }
 
-        .footer-col h3 {
+        .footer-brand h3 {
             color: var(--white);
             font-size: 1.25rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 700;
         }
 
-        .footer-col p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            color: var(--footer-text);
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            max-width: 300px;
+        }
+
+        .footer-heading {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .footer-links {
@@ -169,20 +150,18 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-links a {
             color: var(--footer-text);
             text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
+            transition: color 0.2s ease;
+            font-size: 0.95rem;
         }
 
         .footer-links a:hover {
             color: var(--primary-color);
-            padding-left: 5px;
         }
 
         .contact-item {
@@ -192,42 +171,81 @@
             margin-bottom: 1rem;
         }
 
-        .contact-icon {
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
             color: var(--primary-color);
-            font-weight: bold;
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 3rem auto 0;
-            padding: 2rem 2rem 0;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            font-size: 0.875rem;
-            color: #94a3b8;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 0.875rem;
+        }
+
+        .footer-legal a {
+            color: var(--footer-text);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .nav-menu {
-                display: none; /* Ideally handled with JS for toggle */
+                display: none; /* In a full JS implementation, this would be togglable */
             }
             
-            .mobile-toggle {
+            /* Simple mobile stack for this HTML-only version */
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+            
+            .nav-menu {
                 display: flex;
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-cta {
+                display: none; /* Hide CTA on small mobile to save space */
             }
 
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto 1.5rem;
+            }
+
+            .contact-item {
+                justify-content: center;
             }
 
             .footer-bottom {
                 flex-direction: column;
                 gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-legal a {
+                margin: 0 0.75rem;
             }
         }
     </style>
@@ -245,112 +263,129 @@
   <nav class="nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                OMO Scholengroep<span>.</span> Boxtel
+                OMO <span>Scholengroep</span> Boxtel
             </a>
             
-            <!-- Mobile Hamburger (Visual only for CSS structure) -->
-            <div class="mobile-toggle">
-                <span></span><span></span><span></span>
-            </div>
-
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="ueber-uns.html" class="nav-link">Over ons</a></li>
                 <li><a href="leistungen.html" class="nav-link">Onderwijs</a></li>
-                <li><a href="impressum.html" class="nav-link">Colofon</a></li>
-                <li><a href="kontakt.html" class="nav-link nav-cta">Contact Opnemen</a></li>
+                <li><a href="kontakt.html" class="nav-link">Contact</a></li>
             </ul>
+
+            <a href="kontakt.html" class="nav-cta">Inschrijven</a>
         </div>
     </nav>
   
   <main>
-    <section class="hero" style="background: linear-gradient(135deg, #004b8d 0%, #002a5c 100%); color: #ffffff; padding: 100px 0; text-align: center;">
+    <section class="hero" style="background: linear-gradient(135deg, #004a99 0%, #002855 100%); color: #ffffff; padding: 100px 0; text-align: center;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <h1 style="font-size: 3rem; margin-bottom: 20px; font-weight: 700;">Welkom bij OMO Scholengroep Boxtel</h1>
-        <p class="lead" style="font-size: 1.25rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-            Fijn dat u de website van OMO Scholengroep Boxtel bezoekt! Wij hebben meerdere scholen in onze groep met verschillende onderwijsvormen. Hieronder kunt u kennismaken met onze scholen en onze organisatie.
-        </p>
+        <h1 style="font-size: 3rem; margin-bottom: 20px; font-weight: 700;">Over OMO Scholengroep Boxtel</h1>
+        <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto; opacity: 0.9;">Wij bieden passend onderwijs met verschillende onderwijsvormen binnen onze scholengroep.</p>
     </div>
 </section>
 
 <section class="section" style="padding: 80px 0; background-color: #f8f9fa;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <h2 style="text-align: center; color: #333; margin-bottom: 50px; font-size: 2.2rem;">Onze Scholen</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="color: #002855; font-size: 2.2rem; margin-bottom: 20px;">Welkom bij onze scholengroep</h2>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #444; max-width: 900px; margin: 0 auto;">
+                Fijn dat u de website van OMO Scholengroep Boxtel bezoekt! Wij hebben meerdere scholen in onze groep met verschillende onderwijsvormen. Hieronder kunt u uw keuze maken voor een van onze scholen.
+            </p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
             <!-- School Card 1 -->
-            <div class="card" style="background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 5px solid #e67e22;">
-                <h3 style="color: #004b8d; margin-bottom: 15px;">Baanderherencollege</h3>
-                <p style="margin-bottom: 20px; color: #666;">Een brede school voor beroepsgericht onderwijs.</p>
-                <ul style="padding-left: 20px; margin-bottom: 25px;">
-                    <li style="margin-bottom: 8px;">VMBO</li>
-                    <li style="margin-bottom: 8px;">Praktijkonderwijs</li>
+            <div class="card" style="background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); flex: 1; min-width: 300px; border-top: 5px solid #e63946;">
+                <h3 style="color: #002855; margin-bottom: 15px;">Baanderherencollege</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #555; line-height: 2;">
+                    <li style="border-bottom: 1px solid #eee; padding: 8px 0;"><strong>VMBO</strong></li>
+                    <li style="padding: 8px 0;"><strong>Praktijkonderwijs</strong></li>
                 </ul>
-                <a href="#" class="btn" style="display: inline-block; padding: 10px 20px; background-color: #004b8d; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600;">Bekijk school</a>
+                <a href="#" class="btn" style="display: inline-block; margin-top: 20px; color: #e63946; text-decoration: none; font-weight: 600;">Bekijk school &rarr;</a>
             </div>
 
             <!-- School Card 2 -->
-            <div class="card" style="background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 5px solid #27ae60;">
-                <h3 style="color: #004b8d; margin-bottom: 15px;">Jacob-Roelandslyceum</h3>
-                <p style="margin-bottom: 20px; color: #666;">Voorbereidend wetenschappelijk en hoger algemeen voortgezet onderwijs.</p>
-                <ul style="padding-left: 20px; margin-bottom: 25px;">
-                    <li style="margin-bottom: 8px;">Gymnasium</li>
-                    <li style="margin-bottom: 8px;">Atheneum</li>
-                    <li style="margin-bottom: 8px;">Havo</li>
+            <div class="card" style="background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); flex: 1; min-width: 300px; border-top: 5px solid #004a99;">
+                <h3 style="color: #002855; margin-bottom: 15px;">Jacob-Roelandslyceum</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; color: #555; line-height: 2;">
+                    <li style="border-bottom: 1px solid #eee; padding: 8px 0;"><strong>Gymnasium</strong></li>
+                    <li style="border-bottom: 1px solid #eee; padding: 8px 0;"><strong>Atheneum</strong></li>
+                    <li style="padding: 8px 0;"><strong>Havo</strong></li>
                 </ul>
-                <a href="#" class="btn" style="display: inline-block; padding: 10px 20px; background-color: #004b8d; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600;">Bekijk school</a>
+                <a href="#" class="btn" style="display: inline-block; margin-top: 20px; color: #004a99; text-decoration: none; font-weight: 600;">Bekijk school &rarr;</a>
             </div>
-
         </div>
     </div>
 </section>
 
 <section class="section" style="padding: 80px 0; background-color: #ffffff;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
-        <div style="flex: 1; min-width: 300px;">
-            <h2 style="color: #333; margin-bottom: 25px; font-size: 2rem;">Bestuur & Organisatie</h2>
-            <p style="line-height: 1.8; color: #555; margin-bottom: 20px;">
-                Het Baanderherencollege en het Jacob-Roelandslyceum ressorteren onder het Bevoegd Gezag van de Raad van Bestuur van Ons Middelbaar Onderwijs (OMO). Daarmee is de Raad van Bestuur het schoolbestuur.
-            </p>
-            <p style="line-height: 1.8; color: #555;">
-                De rector/Algemeen Directeur heeft de eindverantwoordelijkheid voor de goede gang van zaken in de school. De rector/Algemeen Directeur rapporteert rechtstreeks aan de voorzitter van de Raad van Bestuur van Ons Middelbaar Onderwijs.
-            </p>
-        </div>
-        <div style="flex: 1; min-width: 300px; background-color: #f0f4f8; padding: 40px; border-radius: 8px;">
-            <h3 style="color: #004b8d; margin-bottom: 20px;">Belangrijke Documenten</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #ddd;">
-                    <strong>Klachtenregeling</strong><br>Ons Middelbaar Onderwijs
-                </li>
-                <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #ddd;">
-                    <strong>Medezeggenschapsreglement</strong><br>OMO
-                </li>
-                <li style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #ddd;">
-                    <strong>Veiligheid & Gedrag</strong><br>Regeling ter voorkoming van seksuele intimidatie, agressie, geweld (waaronder pesten) en discriminatie.
-                </li>
-                <li style="margin-bottom: 0;">
-                    <strong>Jaarverslag</strong><br>Jaarverslag OMO
-                </li>
-            </ul>
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 50px;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: #002855; font-size: 2rem; margin-bottom: 25px;">Bestuur en Organisatie</h2>
+                <p style="margin-bottom: 20px; line-height: 1.7; color: #444;">
+                    Het Baanderherencollege en het Jacob−Roelandslyceum ressorteren onder het Bevoegd Gezag van de Raad van Bestuur van Ons Middelbaar Onderwijs. Daarmee is de Raad van Bestuur het schoolbestuur.
+                </p>
+                <p style="margin-bottom: 20px; line-height: 1.7; color: #444;">
+                    De rector/Algemeen Directeur heeft de eindverantwoordelijkheid voor de goede gang van zaken in de school. De rector/Algemeen Directeur rapporteert rechtstreeks aan de voorzitter van de Raad van Bestuur.
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 300px; background-color: #f0f4f8; padding: 40px; border-radius: 8px;">
+                <h3 style="color: #002855; margin-bottom: 20px;">Disclaimer</h3>
+                <p style="font-size: 0.9rem; line-height: 1.6; color: #666; margin-bottom: 15px;">
+                    De OMO Scholengroep Boxtel publiceert op deze website ter informatie teksten, afbeeldingen en beeldmateriaal. De informatie op deze website wordt met de grootst mogelijke zorg samengesteld. Desondanks kan het voor komen dat er onvolkomenheden in de informatie zitten.
+                </p>
+                <p style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                    De OMO Scholengroep Boxtel behoudt zich daarbij het recht voor op elk moment de inhoud aan te passen of onderdelen te verwijderen zonder daarover mededeling te hoeven doen.
+                </p>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="section" style="padding: 60px 0; background-color: #333; color: #ccc;">
+<section class="section" style="padding: 80px 0; background-color: #002855; color: white;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-            <div>
-                <h3 style="color: #fff; margin-bottom: 15px;">Privacy & AVG</h3>
-                <p style="line-height: 1.6; font-size: 0.95rem;">
-                    De OMO Scholengroep Boxtel handelt conform de AVG. Vereniging Ons Middelbaar Onderwijs heeft een Functionaris Gegevensbescherming (fg). Alle zaken over privacy kunt u sturen naar <a href="mailto:fg@omo.nl" style="color: #fff; text-decoration: underline;">fg@omo.nl</a>. Het Privacyreglement is te downloaden op de site van de vereniging Ons Middelbaar Onderwijs.
+        <h2 style="text-align: center; margin-bottom: 50px; color: #fff;">Belangrijke Documenten & Privacy</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <!-- Privacy Column -->
+            <div class="card" style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+                <h3 style="margin-bottom: 20px; color: #fff; font-size: 1.4rem;">Privacy & AVG</h3>
+                <p style="margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6;">
+                    De OMO Scholengroep Boxtel handelt conform de AVG. Vereniging Ons Middelbaar Onderwijs heeft een Functionaris Gegevensbescherming (fg).
                 </p>
-            </div>
-            <div>
-                <h3 style="color: #fff; margin-bottom: 15px;">Disclaimer</h3>
-                <p style="line-height: 1.6; font-size: 0.95rem;">
-                    De OMO Scholengroep Boxtel publiceert op deze website ter informatie teksten, afbeeldingen en beeldmateriaal. De informatie op deze website wordt met de grootst mogelijke zorg samengesteld. Desondanks kan het voorkomen dat er onvolkomenheden in de informatie zitten. Wij behouden ons het recht voor op elk moment de inhoud aan te passen.
+                <p style="margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6;">
+                    Het Privacyreglement is te downloaden op de site van de vereniging Ons Middelbaar Onderwijs. Alle zaken over privacy kunt u sturen naar:
                 </p>
+                <a href="mailto:fg@omo.nl" class="btn" style="color: #fff; text-decoration: underline;">fg@omo.nl</a>
             </div>
+
+            <!-- Regulations Column -->
+            <div class="card" style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+                <h3 style="margin-bottom: 20px; color: #fff; font-size: 1.4rem;">Reglementen & Downloads</h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span style="display: block; font-weight: 600;">Klachtenregeling</span>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">Ons Middelbaar Onderwijs</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span style="display: block; font-weight: 600;">Medezeggenschapsreglement OMO</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span style="display: block; font-weight: 600;">Veiligheid & Gedrag</span>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">Regeling ter voorkoming van seksuele intimidatie, agressie, geweld (waaronder pesten) en discriminatie</span>
+                    </li>
+                    <li style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span style="display: block; font-weight: 600;">Reglement bezwaar en beroep in leerlingzaken</span>
+                    </li>
+                    <li>
+                        <span style="display: block; font-weight: 600;">Jaarverslag OMO</span>
+                    </li>
+                </ul>
+            </div>
+            
         </div>
     </div>
 </section>
@@ -359,39 +394,46 @@
   <footer class="footer">
         <div class="footer-container">
             <!-- Brand Column -->
-            <div class="footer-col">
+            <div class="footer-brand">
                 <h3>OMO Scholengroep Boxtel</h3>
                 <p>
-                    Wij staan voor kwalitatief hoogwaardig onderwijs in een veilige en stimulerende omgeving. Samen bouwen we aan de toekomst van onze leerlingen.
+                    Wij bieden een inspirerende leeromgeving waar leerlingen zich optimaal kunnen ontwikkelen. Onderwijs met aandacht voor ieder talent.
                 </p>
             </div>
 
             <!-- Links Column -->
             <div class="footer-col">
-                <h3>Snelle Links</h3>
+                <h4 class="footer-heading">Snel naar</h4>
                 <ul class="footer-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="ueber-uns.html">Over ons</a></li>
-                    <li><a href="leistungen.html">Ons Onderwijs</a></li>
-                    <li><a href="impressum.html">Colofon & Privacy</a></li>
+                    <li><a href="ueber-uns.html">Over de school</a></li>
+                    <li><a href="leistungen.html">Ons onderwijs</a></li>
+                    <li><a href="impressum.html">Colofon</a></li>
                 </ul>
             </div>
 
             <!-- Contact Column -->
             <div class="footer-col">
-                <h3>Contact</h3>
-                <p>Heeft u vragen? Neem gerust contact met ons op via e-mail.</p>
-                
+                <h4 class="footer-heading">Contact</h4>
                 <div class="contact-item">
-                    <span class="contact-icon">&#9993;</span> <!-- Envelope Icon -->
-                    <a href="mailto:info@bhc.nl" style="color: white; text-decoration: none; border-bottom: 1px dotted #64748b;">info@bhc.nl</a>
+                    <!-- Email Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <a href="mailto:post@osboxtel.com" style="color: inherit; text-decoration: none; transition: color 0.2s;">post@osboxtel.com</a>
                 </div>
             </div>
         </div>
 
+        <!-- Copyright Bar -->
         <div class="footer-bottom">
-            <span>&copy; 2026 OMO Scholengroep Boxtel. Alle rechten voorbehouden.</span>
-            <span>Onderwijs met passie.</span>
+            <div>
+                &copy; 2026 OMO Scholengroep Boxtel. Alle rechten voorbehouden.
+            </div>
+            <div class="footer-legal">
+                <a href="impressum.html">Privacyverklaring</a>
+                <a href="impressum.html">Colofon</a>
+            </div>
         </div>
     </footer>
 </body>
